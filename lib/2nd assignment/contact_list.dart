@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,7 +8,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ContactScreen(),
+      title: "Contact List",
+      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      home: const ContactScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -47,14 +49,14 @@ class _ContactScreenState extends State<ContactScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirmation"),
-          content: Text("Are you sure for delete?"),
+          title: const Text("Confirmation"),
+          content: const Text("Are you sure for delete?"),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Icon(Icons.signal_cellular_no_sim_outlined,
+              child: const Icon(Icons.signal_cellular_no_sim_outlined,
                   color: Colors.blue),
             ),
             TextButton(
@@ -64,7 +66,7 @@ class _ContactScreenState extends State<ContactScreen> {
                 });
                 Navigator.of(context).pop();
               },
-              child: Icon(Icons.delete_outline, color: Colors.blue),
+              child: const Icon(Icons.delete_outline, color: Colors.blue),
             ),
           ],
         );
@@ -76,7 +78,8 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contact List", style: TextStyle(color: Colors.white)),
+        title:
+            const Text("Contact List", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
       ),
@@ -87,7 +90,7 @@ class _ContactScreenState extends State<ContactScreen> {
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 2.5),
             child: TextField(
               controller: _nameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Name",
                 border: OutlineInputBorder(),
               ),
@@ -96,11 +99,11 @@ class _ContactScreenState extends State<ContactScreen> {
 
           //input number
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 2.5, 10, 0),
+            padding: const EdgeInsets.fromLTRB(10, 2.5, 10, 0),
             child: TextField(
               controller: _numberController,
               keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Number",
                 border: OutlineInputBorder(),
               ),
@@ -109,7 +112,7 @@ class _ContactScreenState extends State<ContactScreen> {
 
           //add button
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -121,7 +124,7 @@ class _ContactScreenState extends State<ContactScreen> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-                child: Text("Add"),
+                child: const Text("Add"),
               ),
             ),
           ),
@@ -130,20 +133,20 @@ class _ContactScreenState extends State<ContactScreen> {
 
           Expanded(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 25, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 25, 10, 0),
               child: ListView.builder(
                 itemCount: _contacts.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                      leading: Icon(Icons.person, color: Colors.blueGrey),
+                      leading: const Icon(Icons.person, color: Colors.blueGrey),
                       title: Text(
                         _contacts[index]['name']!,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.red),
                       ),
                       subtitle: Text(_contacts[index]['number']!),
-                      trailing: Icon(Icons.call, color: Colors.blue),
+                      trailing: const Icon(Icons.call, color: Colors.blue),
                       onLongPress: () => _alertDialog(context, index),
                     ),
                   );
